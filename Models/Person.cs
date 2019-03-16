@@ -54,6 +54,10 @@ namespace Lab03.Models
             {
                 _birthday = value;
                 OnPropertyChanged();
+                OnPropertyChanged("IsAdult");
+                OnPropertyChanged("IsBirthday");
+                OnPropertyChanged("WestHoroSign");
+                OnPropertyChanged("ChineseHoroSign");
             }
         }
 
