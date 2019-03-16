@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Lab03.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700">
     <Grid>
@@ -15,20 +14,32 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Your name:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
-        <Label Grid.Row="1" Grid.Column="0" Content="Your surname:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
-        <Label Grid.Row="2" Grid.Column="0" Content="Your mail:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
-        <Label Grid.Row="3" Grid.Column="0" Content="Your birthday:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="0" Grid.Column="0" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="1" Grid.Column="0" Content="Surname" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="2" Grid.Column="0" Content="Email"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="3" Grid.Column="0" Content="Birthday"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="0" Grid.Column="2" Content="Adult?" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="1" Grid.Column="2" Content="West Horoscope" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+        <Label Grid.Row="2" Grid.Column="2" Content="Chinese Horoscope"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
+        <Label Grid.Row="3" Grid.Column="2" Content="Is Birthday?"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Age, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding WestHoroscope, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ChineseHoroscope, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  FontSize="16"></TextBox>
-        <DatePicker Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  RenderTransformOrigin="0.5,0.5" FontSize="16" Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
-        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Content="Proceed" Command="{Binding SubmitDateCommand}" Height="50" Width="400"></Button>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PersonUser.Name}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40" FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PersonUser.Email}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40"  FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PersonUser.Birthday}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" ></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PersonUser.IsAdult}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40" FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PersonUser.WestHoroSign}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40" FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding PersonUser.ChineseHoroSign}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40"  FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding PersonUser.IsBirthday}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40"  FontSize="16"></TextBlock>
+
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Content="Back" Command="{Binding BackCommand}" Height="50" Width="300" FontSize="18"></Button>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="2" Content="Close" Command="{Binding CloseCommand}" Height="50" Width="300" FontSize="18"></Button>
 
     </Grid>
 </UserControl>

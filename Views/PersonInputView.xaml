@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Lab03.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700">
     <Grid>
@@ -24,11 +23,11 @@
         <Label Grid.Row="2" Grid.Column="0" Content="Your mail:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
         <Label Grid.Row="3" Grid.Column="0" Content="Your birthday:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Age, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding WestHoroscope, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ChineseHoroscope, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  FontSize="16"></TextBox>
-        <DatePicker Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  RenderTransformOrigin="0.5,0.5" FontSize="16" Text="{Binding Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
-        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Content="Proceed" Command="{Binding SubmitDateCommand}" Height="50" Width="400"></Button>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding PersonUser.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PersonUser.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  FontSize="16"></TextBox>
+        <DatePicker Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  RenderTransformOrigin="0.5,0.5" FontSize="16" SelectedDate="{Binding PersonUser.Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Content="Proceed" Command="{Binding ProceedCommand}" Height="50" Width="400"></Button>
 
     </Grid>
 </UserControl>

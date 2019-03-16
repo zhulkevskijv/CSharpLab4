@@ -60,6 +60,9 @@
     </ApplicationDefinition>
     <Compile Include="Properties\Annotation.cs" />
     <Compile Include="Tools\BaseViewModel.cs" />
+    <Compile Include="Tools\Exceptions\EmailNotValidException.cs" />
+    <Compile Include="Tools\Exceptions\PersonNotBornException.cs" />
+    <Compile Include="Tools\Exceptions\PersonTooOldException.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="ViewModels\ResultViewModel.cs" />
     <Compile Include="Tools\Managers\StationManager.cs" />
@@ -128,8 +131,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

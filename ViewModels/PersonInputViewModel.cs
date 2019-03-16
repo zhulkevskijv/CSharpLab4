@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using Lab03.Models;
 using Lab03.Tools;
+using Lab03.Tools.Exceptions;
+using Lab03.Tools.Managers;
+using Lab03.Tools.Navigation;
 
 namespace Lab03.ViewModels
 {
@@ -12,9 +15,15 @@ namespace Lab03.ViewModels
 
         private Person _person;
 
+        public PersonInputViewModel()
+        {
+            _person = new Person("", "", "");
+            StationManager.CurrentPerson = _person;
+        }
+
         #region Commands
 
-        private RelayCommand<object> _submitDateCommand;
+        private RelayCommand<object> _proceedCommand;
 
         #endregion
 
@@ -25,19 +34,19 @@ namespace Lab03.ViewModels
         public Person PersonUser 
         {
             get => _person;
-            set
+            private set
             {
                 _person = value;
                 OnPropertyChanged();
             }
         }
 
-        public RelayCommand<object> ProceedDateCommand
+        public RelayCommand<object> ProceedCommand
         {
             get
             {
-                return _submitDateCommand ??
-                       (_submitDateCommand = new RelayCommand<object>(ProceedImplementation, o => CanExecuteCommand()));
+                return _proceedCommand ??
+                       (_proceedCommand = new RelayCommand<object>(ProceedImplementation, o => CanExecuteCommand()));
             }
         }
 
@@ -45,41 +54,40 @@ namespace Lab03.ViewModels
 
         public bool CanExecuteCommand()
         {
-            return !string.IsNullOrWhiteSpace();
+            return !string.IsNullOrWhiteSpace(PersonUser.Surname)&&!string.IsNullOrWhiteSpace(PersonUser.Name)&& !string.IsNullOrWhiteSpace(PersonUser.Email);
         }
 
         private async void ProceedImplementation(object obj)
         {
             LoaderManager.Instance.ShowLoader();
-            await Task.Run(() =>
+            bool proceedToResults = await Task.Run(() =>
             {
-                Thread.Sleep(2000);
+                StationManager.CurrentPerson = _person;
+                try
+                {
+                    StationManager.CurrentPerson.CheckInput();
+                }
+                catch (PersonTooOldException e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+                catch (PersonNotBornException e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+                catch (EmailNotValidException e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+                Thread.Sleep(1000);
+                return true;
             });
             LoaderManager.Instance.HideLoader();
-            int age = CalculateAge();
-            if (age > 135)
-            {
-                ShowErrorMessageBox("You're too old to be alive.");
-                return;
-            }
-
-            if (age < 0)
-            {
-                ShowErrorMessageBox("You aren't born yet");
-                return;
-            }
-            Age = age + "";
-            
+            if (proceedToResults)
+                NavigationManager.Instance.Navigate(ViewType.Result);
         }
-
-        #region AdditionalMethodsForCalculating
-
-        private void ShowErrorMessageBox(string message)
-        {
-            MessageBox.Show(message);
-        }
-        #endregion
-
-
     }
 }

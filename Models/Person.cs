@@ -1,5 +1,7 @@
 ﻿using Lab03.Tools;
 using System;
+using System.Text.RegularExpressions;
+using Lab03.Tools.Exceptions;
 
 namespace Lab03.Models
 {
@@ -11,7 +13,7 @@ namespace Lab03.Models
         private string _name;
         private string _surname;
         private DateTime _birthday;
-        private string _mail;
+        private string _email;
 
 
         #endregion
@@ -36,12 +38,12 @@ namespace Lab03.Models
                 OnPropertyChanged();
             }
         }
-        public string Mail
+        public string Email
         {
-            get => _mail;
+            get => _email;
             set
             {
-                _mail = value;
+                _email = value;
                 OnPropertyChanged();
             }
         }
@@ -60,19 +62,19 @@ namespace Lab03.Models
 
         #region Constructors
 
-        public Person(string name, string surname, string mail, DateTime birthday)
+        public Person(string name, string surname, string email, DateTime birthday)
         {
             _name = name;
             _surname = surname;
-            _mail = mail;
+            _email = email;
             _birthday = birthday;
         }
 
-        public Person(string name, string surname, string mail)
+        public Person(string name, string surname, string email)
         {
             _name = name;
             _surname = surname;
-            _mail = mail;
+            _email = email;
         }
 
         public Person(string name, string surname, DateTime birthday)
@@ -88,20 +90,7 @@ namespace Lab03.Models
 
         public bool IsAdult
         {
-            get
-            {
-                DateTime currentDate = DateTime.Today;
-                int age = currentDate.Year - Birthday.Year;
-                if (Birthday.Month > currentDate.Month)
-                    --age;
-                else if (Birthday.Month == currentDate.Month)
-                {
-                    if (Birthday.Day > currentDate.Day)
-                        --age;
-                }
-
-                return age >= 18;
-            }
+            get { return CalculateAge() >= 18; }
         }
 
         public string WestHoroSign
@@ -126,7 +115,21 @@ namespace Lab03.Models
         #endregion
 
         #region AdditionalMethodsForCalculating
-        
+
+        private int CalculateAge()
+        {
+            DateTime currentDate = DateTime.Today;
+            int age = currentDate.Year - Birthday.Year;
+            if (Birthday.Month > currentDate.Month)
+                --age;
+            else if (Birthday.Month == currentDate.Month)
+            {
+                if (Birthday.Day > currentDate.Day)
+                    --age;
+            }
+
+            return age;
+        }
 
         private string CalculateWestHoroscope()
         {
@@ -188,6 +191,18 @@ namespace Lab03.Models
             }
         }
 
+        public void CheckInput()
+        {
+            var age = CalculateAge();
+            if (age >= 135)
+                throw new PersonNotBornException(age);
+            if (age < 0)
+                throw new PersonNotBornException(age);
+            if (!Regex.IsMatch(Email, @"[A-Za-z][A-Za-z0-9_]*@[A-Za-z]+\.[A-Za-z]+"))
+            {
+                throw new EmailNotValidException(Email);
+            }
+        }
         #endregion
     }
 }

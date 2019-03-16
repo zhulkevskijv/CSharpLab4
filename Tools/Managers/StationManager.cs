@@ -6,9 +6,7 @@ namespace Lab03.Tools.Managers
 {
     internal static class StationManager
     {
-        
-
-        internal static Person CurrentUser { get; set; }
+        internal static Person CurrentPerson { get; set; }
 
 
         internal static void CloseApp()
