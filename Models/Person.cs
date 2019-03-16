@@ -195,10 +195,10 @@ namespace Lab03.Models
         {
             var age = CalculateAge();
             if (age >= 135)
-                throw new PersonNotBornException(age);
+                throw new PersonTooOldException(age);
             if (age < 0)
                 throw new PersonNotBornException(age);
-            if (!Regex.IsMatch(Email, @"[A-Za-z][A-Za-z0-9_]*@[A-Za-z]+\.[A-Za-z]+"))
+            if (!Regex.IsMatch(Email, @"[A-Za-z][A-Za-z0-9]*@[A-Za-z]+\.[A-Za-z]+"))
             {
                 throw new EmailNotValidException(Email);
             }

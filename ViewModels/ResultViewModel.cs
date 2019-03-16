@@ -6,13 +6,16 @@ using Lab03.Tools.Navigation;
 
 namespace Lab03.ViewModels
 {
-    class ResultViewModel
+    class ResultViewModel :BaseViewModel
     {
         private Person _person = StationManager.CurrentPerson;
         private RelayCommand<Object> _backCommand;
         private RelayCommand<Object> _closeCommand;
 
-        public Person PersonUser { get; }
+        public Person PersonUser
+        {
+            get { return _person; }
+        }
 
         public RelayCommand<Object> BackCommand
         {

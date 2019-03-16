@@ -23,10 +23,10 @@
         <Label Grid.Row="2" Grid.Column="0" Content="Your mail:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
         <Label Grid.Row="3" Grid.Column="0" Content="Your birthday:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding PersonUser.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PersonUser.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  FontSize="16"></TextBox>
-        <DatePicker Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  RenderTransformOrigin="0.5,0.5" FontSize="16" SelectedDate="{Binding PersonUser.Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding PersonUser.Name, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PersonUser.Email, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  FontSize="16"></TextBox>
+        <DatePicker Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  RenderTransformOrigin="0.5,0.5" FontSize="16" SelectedDate="{Binding PersonUser.Birthday, Mode=TwoWay}" ></DatePicker>
         <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Content="Proceed" Command="{Binding ProceedCommand}" Height="50" Width="400"></Button>
 
     </Grid>

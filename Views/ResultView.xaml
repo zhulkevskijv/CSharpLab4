@@ -29,14 +29,14 @@
         <Label Grid.Row="2" Grid.Column="2" Content="Chinese Horoscope"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"></Label>
         <Label Grid.Row="3" Grid.Column="2" Content="Is Birthday?"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PersonUser.Name}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40" FontSize="16"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" FontSize="16"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PersonUser.Email}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40"  FontSize="16"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PersonUser.Birthday}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" ></TextBlock>
-        <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PersonUser.IsAdult}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40" FontSize="16"></TextBlock>
-        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PersonUser.WestHoroSign}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40" FontSize="16"></TextBlock>
-        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding PersonUser.ChineseHoroSign}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40"  FontSize="16"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding PersonUser.IsBirthday}" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="40"  FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PersonUser.Name}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"   FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200"  FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PersonUser.Email}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200"   FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PersonUser.Birthday}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"  FontSize="16" ></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PersonUser.IsAdult}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"    FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PersonUser.WestHoroSign}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200"   FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding PersonUser.ChineseHoroSign}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200"    FontSize="16"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding PersonUser.IsBirthday}" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="200"    FontSize="16"></TextBlock>
 
         <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Content="Back" Command="{Binding BackCommand}" Height="50" Width="300" FontSize="18"></Button>
         <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="2" Content="Close" Command="{Binding CloseCommand}" Height="50" Width="300" FontSize="18"></Button>

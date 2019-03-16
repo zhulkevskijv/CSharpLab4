@@ -13,7 +13,7 @@ namespace Lab03.ViewModels
     {
         #region Fields
 
-        private Person _person;
+        private readonly Person _person;
 
         public PersonInputViewModel()
         {
@@ -34,11 +34,6 @@ namespace Lab03.ViewModels
         public Person PersonUser 
         {
             get => _person;
-            private set
-            {
-                _person = value;
-                OnPropertyChanged();
-            }
         }
 
         public RelayCommand<object> ProceedCommand
