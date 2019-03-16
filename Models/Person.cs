@@ -54,10 +54,11 @@ namespace Lab03.Models
             {
                 _birthday = value;
                 OnPropertyChanged();
-                OnPropertyChanged("IsAdult");
-                OnPropertyChanged("IsBirthday");
-                OnPropertyChanged("WestHoroSign");
-                OnPropertyChanged("ChineseHoroSign");
+                OnPropertyChanged($"IsAdult");
+                OnPropertyChanged($"IsBirthday");
+                OnPropertyChanged($"BirthdayResult");
+                OnPropertyChanged($"WestHoroSign");
+                OnPropertyChanged($"ChineseHoroSign");
             }
         }
 
@@ -92,6 +93,10 @@ namespace Lab03.Models
 
         #region ReadOnly Properties
 
+        public string BirthdayResult
+        {
+            get { return Birthday.ToShortDateString(); }
+        }
         public bool IsAdult
         {
             get { return CalculateAge() >= 18; }
