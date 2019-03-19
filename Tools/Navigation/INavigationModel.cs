@@ -1,9 +1,10 @@
-﻿namespace Lab03.Tools.Navigation
+﻿namespace Lab4.Tools.Navigation
 {
     internal enum ViewType
     {
         PersonInput,
-        Result
+        Result,
+        PersonsList
     }
 
     interface INavigationModel

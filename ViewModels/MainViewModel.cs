@@ -1,7 +1,8 @@
 ﻿using System.Windows;
-using Lab03.Tools;
+using Lab4.Tools;
+using Lab4.Tools.Managers;
 
-namespace Lab03.ViewModels
+namespace Lab4.ViewModels
 {
     internal class MainViewModel : BaseViewModel, ILoaderOwner
     {

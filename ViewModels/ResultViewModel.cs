@@ -1,10 +1,10 @@
 ﻿using System;
-using Lab03.Models;
-using Lab03.Tools;
-using Lab03.Tools.Managers;
-using Lab03.Tools.Navigation;
+using Lab4.Models;
+using Lab4.Tools;
+using Lab4.Tools.Managers;
+using Lab4.Tools.Navigation;
 
-namespace Lab03.ViewModels
+namespace Lab4.ViewModels
 {
     class ResultViewModel :BaseViewModel
     {

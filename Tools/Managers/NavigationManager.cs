@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Lab03.Tools.Navigation;
+﻿using Lab4.Tools.Navigation;
 
-namespace Lab03.Tools
+namespace Lab4.Tools.Managers
 {
     class NavigationManager
     {

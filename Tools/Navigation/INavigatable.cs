@@ -1,4 +1,4 @@
-﻿namespace Lab03.Tools.Navigation
+﻿namespace Lab4.Tools.Navigation
 {
     internal interface INavigatable
     {

@@ -1,10 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Lab03.Tools;
-using Lab03.Tools.Navigation;
-using Lab03.ViewModels;
+using Lab4.Tools.DataStorage;
+using Lab4.Tools.Managers;
+using Lab4.Tools.Navigation;
+using Lab4.ViewModels;
 
-namespace Lab03
+namespace Lab4
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -21,9 +22,14 @@ namespace Lab03
         {
             InitializeComponent();
             DataContext = new MainViewModel();
-            NavigationManager.Instance.Initialize(new InitializationNavigationModel(this));
-            NavigationManager.Instance.Navigate(ViewType.PersonInput);
+            InitializeApplication();
+        }
 
+        private void InitializeApplication()
+        {
+            StationManager.Initialize(new SerializedDataStorage());
+            NavigationManager.Instance.Initialize(new InitializationNavigationModel(this));
+            NavigationManager.Instance.Navigate(ViewType.PersonsList);
         }
     }
 }

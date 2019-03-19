@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Lab03.Tools
+namespace Lab4.Tools
 {
     public class RelayCommand<T> : ICommand
     {

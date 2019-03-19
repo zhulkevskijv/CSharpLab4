@@ -1,8 +1,8 @@
 ﻿using System.Windows.Controls;
-using Lab03.Tools.Navigation;
-using Lab03.ViewModels;
+using Lab4.Tools.Navigation;
+using Lab4.ViewModels;
 
-namespace Lab03.Views
+namespace Lab4.Views
 {
     /// <summary>
     /// Логика взаимодействия для PersonInputView.xaml

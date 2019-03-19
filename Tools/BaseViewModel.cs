@@ -1,9 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Jetbrains.Annotation;
+using Lab4.Properties;
 
-namespace Lab03.Tools
+namespace Lab4.Tools
 {
+    [Serializable]
     internal abstract class BaseViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged

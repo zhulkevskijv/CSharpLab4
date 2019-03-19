@@ -1,19 +1,25 @@
-﻿using Lab03.Tools;
+﻿using Lab4.Tools;
 using System;
 using System.Text.RegularExpressions;
-using Lab03.Tools.Exceptions;
+using Lab4.Tools.Exceptions;
 
-namespace Lab03.Models
+namespace Lab4.Models
 {
+    [Serializable]
     internal class Person : BaseViewModel
     {
 
         #region Fields
 
+        private bool _initialized = false;
         private string _name;
         private string _surname;
         private DateTime _birthday;
         private string _email;
+        private string _westHoroSign;
+        private string _chineseHoroSign;
+        private bool _isAdult;
+        private bool _isBirthday;
 
 
         #endregion
@@ -53,12 +59,8 @@ namespace Lab03.Models
             set
             {
                 _birthday = value;
+                _initialized = false;
                 OnPropertyChanged();
-                OnPropertyChanged($"IsAdult");
-                OnPropertyChanged($"IsBirthday");
-                OnPropertyChanged($"BirthdayResult");
-                OnPropertyChanged($"WestHoroSign");
-                OnPropertyChanged($"ChineseHoroSign");
             }
         }
 
@@ -93,30 +95,43 @@ namespace Lab03.Models
 
         #region ReadOnly Properties
 
-        public string BirthdayResult
-        {
-            get { return Birthday.ToShortDateString(); }
-        }
         public bool IsAdult
         {
-            get { return CalculateAge() >= 18; }
+            get
+            {
+                if (!_initialized)
+                    InitializePerson();
+                return _isAdult;
+            }
         }
 
         public string WestHoroSign
         {
-            get { return CalculateWestHoroscope(); }
+            get
+            {
+                if (!_initialized)
+                    InitializePerson();
+                return _westHoroSign;
+            }
         }
 
         public string ChineseHoroSign
         {
-            get { return CalculateChineseHoroscope(); }
+            get
+            {
+                if (!_initialized)
+                    InitializePerson();
+                return _chineseHoroSign;
+            }
         }
 
         public bool IsBirthday
         {
             get
             {
-                return Birthday.Day == DateTime.Today.Day && Birthday.Month == DateTime.Today.Month;
+                if (!_initialized)
+                    InitializePerson();
+                return _isBirthday;
             }
         }
 
@@ -211,6 +226,21 @@ namespace Lab03.Models
             {
                 throw new EmailNotValidException(Email);
             }
+        }
+
+        private void InitializePerson()
+        {
+            _isBirthday = Birthday.Day == DateTime.Today.Day && Birthday.Month == DateTime.Today.Month;
+            _chineseHoroSign = CalculateChineseHoroscope();
+            _westHoroSign = CalculateWestHoroscope();
+            _isAdult = CalculateAge() >= 18;
+            _initialized = true;
+
+            OnPropertyChanged($"IsAdult");
+            OnPropertyChanged($"IsBirthday");
+            OnPropertyChanged($"BirthdayResult");
+            OnPropertyChanged($"WestHoroSign");
+            OnPropertyChanged($"ChineseHoroSign");
         }
         #endregion
     }

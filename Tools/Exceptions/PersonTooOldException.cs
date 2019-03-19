@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Lab03.Tools.Exceptions
+namespace Lab4.Tools.Exceptions
 {
     internal class PersonTooOldException: Exception
     {

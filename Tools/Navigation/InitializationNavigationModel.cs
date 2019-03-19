@@ -1,7 +1,7 @@
 ﻿using System;
-using Lab03.Views;
+using Lab4.Views;
 
-namespace Lab03.Tools.Navigation
+namespace Lab4.Tools.Navigation
 {
     internal class InitializationNavigationModel : BaseNavigationModel
     {
@@ -19,6 +19,9 @@ namespace Lab03.Tools.Navigation
                     break;
                 case ViewType.Result:
                     ViewsDictionary.Add(viewType, new ResultView());
+                    break;
+                case ViewType.PersonsList:
+                    ViewsDictionary.Add(viewType, new PersonListView());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(viewType), viewType, null);

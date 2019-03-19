@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Lab03.Tools.Navigation
+namespace Lab4.Tools.Navigation
 {
     internal abstract class BaseNavigationModel : INavigationModel
     {
