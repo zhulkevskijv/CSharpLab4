@@ -17,9 +17,6 @@ namespace Lab4.Tools.Navigation
                 case ViewType.PersonInput:
                     ViewsDictionary.Add(viewType, new PersonInputView());
                     break;
-                case ViewType.Result:
-                    ViewsDictionary.Add(viewType, new ResultView());
-                    break;
                 case ViewType.PersonsList:
                     ViewsDictionary.Add(viewType, new PersonListView());
                     break;

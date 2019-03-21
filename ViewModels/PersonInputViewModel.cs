@@ -23,7 +23,7 @@ namespace Lab4.ViewModels
 
         #region Commands
 
-        private RelayCommand<object> _proceedCommand;
+        private RelayCommand<object> _addCommand;
 
         #endregion
 
@@ -36,12 +36,12 @@ namespace Lab4.ViewModels
             get => _person;
         }
 
-        public RelayCommand<object> ProceedCommand
+        public RelayCommand<object> AddCommand
         {
             get
             {
-                return _proceedCommand ??
-                       (_proceedCommand = new RelayCommand<object>(ProceedImplementation, o => CanExecuteCommand()));
+                return _addCommand ??
+                       (_addCommand = new RelayCommand<object>(AddImplementation, o => CanExecuteCommand()));
             }
         }
 
@@ -52,7 +52,7 @@ namespace Lab4.ViewModels
             return !string.IsNullOrWhiteSpace(PersonUser.Surname)&&!string.IsNullOrWhiteSpace(PersonUser.Name)&& !string.IsNullOrWhiteSpace(PersonUser.Email);
         }
 
-        private async void ProceedImplementation(object obj)
+        private async void AddImplementation(object obj)
         {
             LoaderManager.Instance.ShowLoader();
             bool proceedToResults = await Task.Run(() =>
@@ -78,11 +78,14 @@ namespace Lab4.ViewModels
                     return false;
                 }
                 Thread.Sleep(1000);
+                StationManager.DataStorage.AddPerson(_person);
                 return true;
+               
             });
             LoaderManager.Instance.HideLoader();
             if (proceedToResults)
-                NavigationManager.Instance.Navigate(ViewType.Result);
+                NavigationManager.Instance.Navigate(ViewType.PersonsList);
+            
         }
     }
 }

@@ -1,17 +1,18 @@
-﻿using Lab4.Tools;
-using System;
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using Lab4.Properties;
 using Lab4.Tools.Exceptions;
 
 namespace Lab4.Models
 {
     [Serializable]
-    internal class Person : BaseViewModel
+    internal class Person : INotifyPropertyChanged
     {
 
         #region Fields
-
-        private bool _initialized = false;
+        private bool _initialized;
         private string _name;
         private string _surname;
         private DateTime _birthday;
@@ -20,8 +21,6 @@ namespace Lab4.Models
         private string _chineseHoroSign;
         private bool _isAdult;
         private bool _isBirthday;
-
-
         #endregion
 
         #region Properties
@@ -109,6 +108,7 @@ namespace Lab4.Models
         {
             get
             {
+               
                 if (!_initialized)
                     InitializePerson();
                 return _westHoroSign;
@@ -241,6 +241,17 @@ namespace Lab4.Models
             OnPropertyChanged($"BirthdayResult");
             OnPropertyChanged($"WestHoroSign");
             OnPropertyChanged($"ChineseHoroSign");
+        }
+        #endregion
+
+        #region INotifyPropertyChanged
+        [field:NonSerialized]
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

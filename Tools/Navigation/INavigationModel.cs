@@ -3,7 +3,6 @@
     internal enum ViewType
     {
         PersonInput,
-        Result,
         PersonsList
     }
 
