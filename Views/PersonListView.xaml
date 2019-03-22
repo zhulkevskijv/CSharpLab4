@@ -6,17 +6,40 @@
         mc:Ignorable="d"
         d:DesignHeight="450" d:DesignWidth="700">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF4856E6" Offset="0"/>
+                <GradientStop Color="#FF9A97DC" Offset="1"/>
+                <GradientStop Color="#FF719DDC"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="0" Grid.ColumnSpan="4" ItemsSource="{Binding Persons, Mode=OneWay}" SelectedItem ="{Binding SelectedPerson}"  AutoGenerateColumns="False" >
+        <ComboBox Width="190" Height="35" FontSize="16" VerticalContentAlignment="Center" SelectedIndex="{Binding IndexFilter}" >
+            <ComboBoxItem Content="Name" IsSelected="True"></ComboBoxItem>
+            <ComboBoxItem Content="Surname"></ComboBoxItem>
+            <ComboBoxItem Content="Email"></ComboBoxItem>
+            <ComboBoxItem Content="Birthday"></ComboBoxItem>
+            <ComboBoxItem Content="IsAdult"></ComboBoxItem>
+            <ComboBoxItem Content="WestHoroSign"></ComboBoxItem>
+            <ComboBoxItem Content="ChineseHoroSign"></ComboBoxItem>
+            <ComboBoxItem Content="IsBirthday"></ComboBoxItem>
+        </ComboBox>
+        <StackPanel  HorizontalAlignment="Center" Height="35" Grid.Row="0"  Grid.ColumnSpan="2" Grid.Column="1" Orientation="Horizontal">
+            <TextBox Width="250" Height="35" VerticalContentAlignment="Center" FontSize="17" Text="{Binding FilterText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button Width="60" Height="35" Content="Filter" FontSize="16" Command="{Binding FilterCommand}"></Button>
+            <Button Width="60" Height="35" Content="Clear" FontSize="16" Margin="10,0" Command="{Binding ClearCommand}"></Button>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" ItemsSource="{Binding Persons, Mode=OneWay}" SelectedItem ="{Binding SelectedPerson}"  AutoGenerateColumns="False"
+                  BorderBrush="#FF9CBDDC" Width="Auto" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Surname" Binding="{Binding Surname, Mode=TwoWay}"></DataGridTextColumn>
@@ -28,9 +51,9 @@
                 <DataGridTextColumn Header="Is Birthday?" Binding="{Binding IsBirthday}" IsReadOnly="True"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="1" Grid.Column="0" Width="120" Height="50" Content="Add" FontSize="20" Command="{Binding AddCommand}"></Button>
-        <Button Grid.Row="1" Grid.Column="1" Width="120" Height="50" Content="Delete" FontSize="20" Command="{Binding DeleteCommand}"></Button>
-        <Button Grid.Row="1" Grid.Column="2" Width="120" Height="50" Content="Add" FontSize="20"></Button>
-        <Button Grid.Row="1" Grid.Column="3" Width="120" Height="50" Content="Save" FontSize="20" Click="Button_Click"></Button>
-</Grid>
+        <Button Grid.Row="2" Grid.Column="0" Width="180" Height="40" Content="Add" FontSize="22" Command="{Binding AddCommand}"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Width="180" Height="40" Content="Delete" FontSize="22" Command="{Binding DeleteCommand}"></Button>
+        <Button Grid.Row="2" Grid.Column="2" Width="180" Height="40" Content="Save" FontSize="22" Command="{Binding SaveCommand}"></Button>
+
+    </Grid>
 </UserControl>

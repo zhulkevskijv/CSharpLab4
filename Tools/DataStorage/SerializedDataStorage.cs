@@ -10,6 +10,7 @@ namespace Lab4.Tools.DataStorage
 {
     internal class SerializedDataStorage : IDataStorage
     {
+        #region Fields And Construcrtor
         private readonly List<Person> _persons;
 
         internal SerializedDataStorage()
@@ -24,11 +25,14 @@ namespace Lab4.Tools.DataStorage
                 AddPersonsToInitialize();
             }
         }
+        #endregion
+
+        #region Public Methods
 
         public void AddPerson(Person person)
         {
             _persons.Add(person);
-            OnCollectionChanged(new CollectionChangeEventArgs(CollectionChangeAction.Add,person));
+            OnCollectionChanged(new CollectionChangeEventArgs(CollectionChangeAction.Add, person));
             SaveChanges();
         }
 
@@ -43,23 +47,29 @@ namespace Lab4.Tools.DataStorage
         {
             get { return _persons.ToList(); }
         }
-
-        public event CollectionChangeEventHandler _collectionChanged;
-
         public void SaveChanges()
         {
             SerializationManager.Serialize(_persons, FileFolderHelper.StorageFilePath);
         }
 
+        #endregion
+
+        #region Event
+        public event CollectionChangeEventHandler _collectionChanged;
+
         protected void OnCollectionChanged(CollectionChangeEventArgs e)
         {
-            _collectionChanged?.Invoke(this,e);
+            _collectionChanged?.Invoke(this, e);
         }
+        #endregion
+
+        #region Persons to Initialize
 
         private void AddPersonsToInitialize()
         {
             AddPerson(new Person("Galileo", "Galiley", "sun_is_center@zemlya.com", new DateTime(2003, 10, 17)));
-            AddPerson(new Person("Nicolaus", "Copernicus", "burn_to_the_ground@astronomia.com", new DateTime(1976, 5, 12)));
+            AddPerson(new Person("Nicolaus", "Copernicus", "burn_to_the_ground@astronomia.com",
+                new DateTime(1976, 5, 12)));
             AddPerson(new Person("Isaac", "Newton", "appleIsaac@vovan.com", new DateTime(2005, 1, 13)));
             AddPerson(new Person("Albert", "Einstein", "e_mc@squared.com", new DateTime(1940, 7, 9)));
             AddPerson(new Person("Charles", "Darwin", "monkey@human.evo", new DateTime(1992, 12, 1)));
@@ -68,7 +78,8 @@ namespace Lab4.Tools.DataStorage
             AddPerson(new Person("Amadeo", "Avogadro", "6_02@10_23.mol", new DateTime(1997, 10, 29)));
             AddPerson(new Person("Alexander Graham", "Bell", "dzin_dzin@text.me", new DateTime(1984, 2, 28)));
             AddPerson(new Person("Rene", "Descarts", "abscissa@oridanta.xy", new DateTime(1978, 3, 4)));
-            AddPerson(new Person("Eratosphen", "Eratosphenovich", "zemlya_big@resheto.greece", new DateTime(2015, 8, 11)));
+            AddPerson(new Person("Eratosphen", "Eratosphenovich", "zemlya_big@resheto.greece",
+                new DateTime(2015, 8, 11)));
             AddPerson(new Person("Michael", "Faraday", "magnetic@elektric.anod", new DateTime(2018, 7, 12)));
             AddPerson(new Person("Fibonacci", "Fibonaccicus", "1_1_2_3@5_8.13", new DateTime(2004, 11, 18)));
             AddPerson(new Person("Heinrich", "Hertz", "vibrator@bzbzbz.hz", new DateTime(1959, 1, 20)));
@@ -105,9 +116,14 @@ namespace Lab4.Tools.DataStorage
             AddPerson(new Person("Victor", "Frankenstein", "elctro@monster.rise", new DateTime(1955, 8, 30)));
             AddPerson(new Person("Benito", "Musollini", "hitler@one.love", new DateTime(1944, 9, 1)));
             AddPerson(new Person("Julius", "Cesar", "and_u@brutus.gr", new DateTime(1933, 11, 5)));
-            AddPerson(new Person("Volodymyr", "Boublik", "nikak_ne_poymu@schto_ty_imela.vvidu", new DateTime(1956, 10, 9)));
+            AddPerson(new Person("Volodymyr", "Boublik", "nikak_ne_poymu@schto_ty_imela.vvidu",
+                new DateTime(1956, 10, 9)));
             AddPerson(new Person("John", "Kennedy", "snipers@sucks.com", new DateTime(1978, 5, 8)));
             AddPerson(new Person("Neil", "Armstrong", "dude@its.moon", new DateTime(1990, 6, 1)));
         }
+
+        #endregion
+
+        
     }
 }
