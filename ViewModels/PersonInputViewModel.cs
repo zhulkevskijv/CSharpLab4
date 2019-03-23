@@ -24,6 +24,7 @@ namespace Lab4.ViewModels
         #region Commands
 
         private RelayCommand<object> _addCommand;
+        private RelayCommand<object> _backCommand;
 
         #endregion
 
@@ -42,6 +43,14 @@ namespace Lab4.ViewModels
             {
                 return _addCommand ??
                        (_addCommand = new RelayCommand<object>(AddImplementation, o => CanExecuteCommand()));
+            }
+        }
+        public RelayCommand<object> BackCommand
+        {
+            get
+            {
+                return _backCommand ??
+                       (_backCommand = new RelayCommand<object>(BackImplementation));
             }
         }
 
@@ -86,6 +95,11 @@ namespace Lab4.ViewModels
             if (proceedToResults)
                 NavigationManager.Instance.Navigate(ViewType.PersonsList);
             
+        }
+
+        private void BackImplementation(object obj)
+        {
+            NavigationManager.Instance.Navigate(ViewType.PersonsList);
         }
     }
 }

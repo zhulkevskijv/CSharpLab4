@@ -38,8 +38,8 @@
             <Button Width="60" Height="35" Content="Filter" FontSize="16" Command="{Binding FilterCommand}"></Button>
             <Button Width="90" Height="35" Content="Clear filter" FontSize="16" Margin="10,0" Command="{Binding ClearCommand}"></Button>
         </StackPanel>
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" ItemsSource="{Binding Persons, Mode=OneWay}" SelectedItem ="{Binding SelectedPerson}"  AutoGenerateColumns="False"
-                  BorderBrush="#FF9CBDDC" Width="Auto" >
+        <DataGrid Name="DataGrid" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" ItemsSource="{Binding Persons, Mode=OneWay}" SelectedItem ="{Binding SelectedPerson}"  AutoGenerateColumns="False"
+                  BorderBrush="#FF9CBDDC" Width="Auto" SelectedIndex="5" CellEditEnding="DataGrid_CellEditEnding" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=TwoWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Surname" Binding="{Binding Surname, Mode=TwoWay}"></DataGridTextColumn>

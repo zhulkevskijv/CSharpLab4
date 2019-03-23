@@ -27,7 +27,9 @@
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PersonUser.Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  FontSize="16"></TextBox>
         <DatePicker Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40"  RenderTransformOrigin="0.5,0.5" FontSize="16" SelectedDate="{Binding PersonUser.Birthday, Mode=TwoWay}" ></DatePicker>
-        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" Content="Add" Command="{Binding AddCommand}" Height="50" Width="400" FontSize="20"></Button>
-
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Back" Command="{Binding BackCommand}" Height="50" Width="250" FontSize="20" Margin="20,0"></Button>
+            <Button Content="Add" Command="{Binding AddCommand}" Height="50" Width="250" FontSize="20" Margin="20,0"></Button>
+        </StackPanel>
     </Grid>
 </UserControl>
