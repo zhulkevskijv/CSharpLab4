@@ -18,10 +18,10 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Your name:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
-        <Label Grid.Row="1" Grid.Column="0" Content="Your surname:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
-        <Label Grid.Row="2" Grid.Column="0" Content="Your mail:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
-        <Label Grid.Row="3" Grid.Column="0" Content="Your birthday:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="0" Grid.Column="0" Content="Person name:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="1" Grid.Column="0" Content="Person surname:" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="2" Grid.Column="0" Content="Person mail:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
+        <Label Grid.Row="3" Grid.Column="0" Content="Person birthday:"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"></Label>
 
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding PersonUser.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PersonUser.Surname, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" Height="40" FontSize="16"></TextBox>

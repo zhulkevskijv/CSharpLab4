@@ -147,7 +147,7 @@ namespace Lab4.ViewModels
                     _persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonsList.Where(person => person.Email.Contains(FilterText)));
                     break;
                 case (3):
-                    _persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonsList.Where(person => person.Birthday.ToShortDateString().Contains(FilterText.ToLower())));
+                    _persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonsList.Where(person => person.Birthday.ToString("dd.MM.yyyy").Contains(FilterText.ToLower())));
                     break;
                 case (4):
                     _persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonsList.Where(person => person.IsAdult.ToString().Contains(FilterText)));
