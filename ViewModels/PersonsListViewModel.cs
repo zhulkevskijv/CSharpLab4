@@ -22,7 +22,9 @@ namespace Lab4.ViewModels
         private RelayCommand<object> _saveCommand;
         private RelayCommand<object> _filterCommand;
         private RelayCommand<object> _clearCommand;
-        #endregion
+        private RelayCommand<object> _sortAscCommand;
+        private RelayCommand<object> _sortDescCommand;
+        #endregion 
 
         #region Constructor
         internal PersonsListViewModel()
@@ -110,6 +112,7 @@ namespace Lab4.ViewModels
                        (_clearCommand = new RelayCommand<object>(ClearImplementation));
             }
         }
+
         public RelayCommand<object> FilterCommand
         {
             get
@@ -118,6 +121,25 @@ namespace Lab4.ViewModels
                        (_filterCommand = new RelayCommand<object>(FilterImplementation, o => CanExecuteFilterCommand()));
             }
         }
+
+        public RelayCommand<object> SortAscCommand
+        {
+            get
+            {
+                return _sortAscCommand ??
+                       (_sortAscCommand = new RelayCommand<object>(SortAscImplementation));
+            }
+        }
+
+        public RelayCommand<object> SortDescCommand
+        {
+            get
+            {
+                return _sortDescCommand ??
+                       (_sortDescCommand = new RelayCommand<object>(SortDescImplementation));
+            }
+        }
+
         #endregion
 
         #region CommandImplementation
@@ -134,7 +156,6 @@ namespace Lab4.ViewModels
 
         private void FilterImplementation(object obj)
         {
-            _persons = new ObservableCollection<Person>();
             switch (IndexFilter)
             {
                 case (0):
@@ -196,6 +217,70 @@ namespace Lab4.ViewModels
                 Persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonsList);
             });
             LoaderManager.Instance.HideLoader();
+        }
+
+        private void SortAscImplementation(object obj)
+        {
+            switch (IndexFilter)
+            {
+                case (0):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.Name));
+                    break;
+                case (1):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.Surname));
+                    break;
+                case (2):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.Email));
+                    break;
+                case (3):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.Birthday));
+                    break;
+                case (4):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.IsAdult.ToString()));
+                    break;
+                case (5):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.WestHoroSign));
+                    break;
+                case (6):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.ChineseHoroSign));
+                    break;
+                case (7):
+                    _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.IsBirthday.ToString()));
+                    break;
+            }
+            OnPropertyChanged($"Persons");
+        }
+
+        private void SortDescImplementation(object obj)
+        {
+            switch(IndexFilter)
+            {
+                case (0):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.Name));
+                break;
+                case (1):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.Surname));
+                break;
+                case (2):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.Email));
+                break;
+                case (3):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.Birthday));
+                break;
+                case (4):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.IsAdult.ToString()));
+                break;
+                case (5):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.WestHoroSign));
+                break;
+                case (6):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.ChineseHoroSign));
+                break;
+                case (7):
+                _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.IsBirthday.ToString()));
+                break;
+            }
+            OnPropertyChanged($"Persons");
         }
 
         #endregion
