@@ -248,6 +248,8 @@ namespace Lab4.ViewModels
                     _persons = new ObservableCollection<Person>(_persons.OrderBy(i => i.IsBirthday.ToString()));
                     break;
             }
+
+            _selectedPerson = null;
             OnPropertyChanged($"Persons");
         }
 
@@ -280,6 +282,7 @@ namespace Lab4.ViewModels
                 _persons = new ObservableCollection<Person>(_persons.OrderByDescending(i => i.IsBirthday.ToString()));
                 break;
             }
+            _selectedPerson = null;
             OnPropertyChanged($"Persons");
         }
 
@@ -287,15 +290,10 @@ namespace Lab4.ViewModels
 
         #region ColectionEvents
 
-        private void UpdateList()
+        private void DataStorage__collectionChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e)
         {
             _persons = new ObservableCollection<Person>(StationManager.DataStorage.PersonsList);
             OnPropertyChanged($"Persons");
-        }
-
-        private void DataStorage__collectionChanged(object sender, System.ComponentModel.CollectionChangeEventArgs e)
-        {
-            UpdateList();
         }
 
         #endregion

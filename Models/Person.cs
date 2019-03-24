@@ -222,7 +222,7 @@ namespace Lab4.Models
                 throw new PersonTooOldException(age);
             if (age < 0)
                 throw new PersonNotBornException(age);
-            if (!Regex.IsMatch(Email, @"[A-Za-z][A-Za-z0-9]*@[A-Za-z]+\.[A-Za-z]+"))
+            if (!Regex.IsMatch(Email, @"[A-Za-z_0-9][A-Za-z0-9_]*@[A-Za-z_0-9]+\.[A-Za-z_0-9]+"))
             {
                 throw new EmailNotValidException(Email);
             }
